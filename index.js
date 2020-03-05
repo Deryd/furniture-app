@@ -1,7 +1,7 @@
 const path = require('path')
 const express = require('express')
 var Datastore = require('nedb');
-var db = new Datastore({filename : './db/notes'});
+var db = new Datastore({filename : './db/furniture'});
 db.loadDatabase();
 
 const app = express(),
@@ -14,14 +14,18 @@ app.get("/", (req, res) => {
     res.sendFile(HTML_FILE)
 })
 
-app.get("/notes", (req, res) => {
-    let notes = [];
-    notes = db.getAllData();
+app.get("/furniture", (req, res) => {
+    let furnitures = [
+        {"id": 1, "name": "Test 1"},
+        {"id": 2, "name": "Test 2"},
+        {"id": 3, "name": "Test 3"},
+    ];
+    //furnitures = db.getAllData();
 
-    res.send(notes);
+    res.send(furnitures);
 })
 
-app.put("/note/add", (req, res) => {
+app.put("/furniture/add", (req, res) => {
     res.send(req);
 })
 
