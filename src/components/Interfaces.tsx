@@ -1,6 +1,10 @@
-interface ICardHeader {
-    title: string,
-    subheader: string
+interface IFurnitureDescription {
+    type: string,
+    name: string,
+    code: string,
+    design: string,
+    littleDescription: string,
+    description: string
 }
 
 interface ICardMedia {
@@ -12,7 +16,7 @@ interface IFurniture {
     id: string, 
     header: string, 
     text: string,
-    cardheader: ICardHeader
+    furnitureDescription: IFurnitureDescription
 }
 
 interface IProps {

@@ -12,7 +12,11 @@ export const FurnitureList: React.FC<IFurnitureList> = (props) => {
             </Grid>
             {
                 props.furniture.map((item: IFurniture, index) => {
-                    return <FurnitureItem key={index} id={item.id} header={item.header} text={item.text} cardheader={item.cardheader}/>
+                    return <FurnitureItem
+                        key={index} id={item.id}
+                        header={item.header}
+                        text={item.text}
+                        furnitureDescription={item.furnitureDescription} />
                 })
             }
         </Grid>

@@ -27795,46 +27795,39 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function App() {
-    let furnitureArray = [
-        {
-            id: "string",
-            header: "string",
-            text: "string",
-            cardheader: {
-                title: "string",
-                subheader: "string"
-            }
-        }
-    ];
-    let state = {
-        furnitureList: furnitureArray
-    };
-    fetch("/furniture")
-        .then(res => res.json())
-        .then((result) => {
-        //console.log(result);
-        //state = result;
-        // this.setState({
-        //   isLoaded: true,
-        //   items: result.items
-        // });
-    }, (error) => {
-        // this.setState({
-        //   isLoaded: true,
-        //   error
-        // });
-    });
-    return (react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", { className: "App" },
-        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["BrowserRouter"], null,
-            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_NavMenu__WEBPACK_IMPORTED_MODULE_2__["NavMenu"], null),
-            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", { style: { height: 250, backgroundColor: 'gray' } }),
-            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Footer__WEBPACK_IMPORTED_MODULE_4__["Footer"], null),
-            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["Switch"], null,
-                react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["Route"], { path: "/admin" },
-                    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Admin__WEBPACK_IMPORTED_MODULE_5__["Admin"], null)),
-                react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["Route"], { path: "/" },
-                    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_FurnitureList__WEBPACK_IMPORTED_MODULE_3__["FurnitureList"], { furniture: state.furnitureList }))))));
+class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
+    constructor(props) {
+        super(props);
+        this.state = { furnitureList: [] };
+    }
+    componentWillMount() {
+        fetch("/furniture")
+            .then(res => res.json())
+            .then((result) => {
+            //console.log(result);
+            //state = result;
+            this.setState({
+                furnitureList: result
+            });
+        }, (error) => {
+            // this.setState({
+            //   isLoaded: true,
+            //   error
+            // });
+        });
+    }
+    render() {
+        return (react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", { className: "App" },
+            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["BrowserRouter"], null,
+                react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_NavMenu__WEBPACK_IMPORTED_MODULE_2__["NavMenu"], null),
+                react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", { style: { height: 250, backgroundColor: 'gray' } }),
+                react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Footer__WEBPACK_IMPORTED_MODULE_4__["Footer"], null),
+                react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["Switch"], null,
+                    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["Route"], { path: "/admin" },
+                        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Admin__WEBPACK_IMPORTED_MODULE_5__["Admin"], null)),
+                    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["Route"], { path: "/" },
+                        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_FurnitureList__WEBPACK_IMPORTED_MODULE_3__["FurnitureList"], { furniture: this.state.furnitureList }))))));
+    }
 }
 /* harmony default export */ __webpack_exports__["default"] = (App);
 
@@ -27933,6 +27926,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const FurnitureItem = (props) => {
+    //const [key, header, text, furnitureDescription] = props;
     const useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_2__["makeStyles"])((theme) => Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_2__["createStyles"])({
         root: {
             maxWidth: 345,
@@ -27964,10 +27958,10 @@ const FurnitureItem = (props) => {
     return (react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_4__["default"], { item: true, xs: 4, className: classes.root },
         react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Card__WEBPACK_IMPORTED_MODULE_5__["default"], null,
             react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_CardHeader__WEBPACK_IMPORTED_MODULE_6__["default"], { avatar: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Avatar__WEBPACK_IMPORTED_MODULE_7__["default"], { "aria-label": "recipe", className: classes.avatar }, "R"), action: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_IconButton__WEBPACK_IMPORTED_MODULE_8__["default"], { "aria-label": "settings" },
-                    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_icons_MoreVert__WEBPACK_IMPORTED_MODULE_13___default.a, null)), title: "Shrimp and Chorizo Paella", subheader: "September 14, 2016" }),
+                    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_icons_MoreVert__WEBPACK_IMPORTED_MODULE_13___default.a, null)), title: props.furnitureDescription.name, subheader: props.furnitureDescription.type }),
             react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_CardMedia__WEBPACK_IMPORTED_MODULE_14__["default"], { className: classes.media, image: "/static/images/cards/paella.jpg", title: "Paella dish" }),
             react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_CardContent__WEBPACK_IMPORTED_MODULE_15__["default"], null,
-                react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_9__["default"], { variant: "body2", color: "textSecondary", component: "p" }, "This impressive paella is a perfect party dish and a fun meal to cook together with your guests. Add 1 cup of frozen peas along with the mussels, if you like.")),
+                react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_9__["default"], { variant: "body2", color: "textSecondary", component: "p" }, props.furnitureDescription.littleDescription)),
             react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_CardActions__WEBPACK_IMPORTED_MODULE_16__["default"], { disableSpacing: true },
                 react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_IconButton__WEBPACK_IMPORTED_MODULE_8__["default"], { "aria-label": "add to favorites" },
                     react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_icons_Favorite__WEBPACK_IMPORTED_MODULE_10___default.a, null)),
@@ -27979,11 +27973,13 @@ const FurnitureItem = (props) => {
                     react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_icons_ExpandMore__WEBPACK_IMPORTED_MODULE_12___default.a, null))),
             react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Collapse__WEBPACK_IMPORTED_MODULE_17__["default"], { in: expanded, timeout: "auto", unmountOnExit: true },
                 react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_CardContent__WEBPACK_IMPORTED_MODULE_15__["default"], null,
-                    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_9__["default"], { paragraph: true }, "Method:"),
-                    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_9__["default"], { paragraph: true }, "Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10 minutes."),
-                    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_9__["default"], { paragraph: true }, "Heat oil in a (14- to 16-inch) paella pan or a large, deep skillet over medium-high heat. Add chicken, shrimp and chorizo, and cook, stirring occasionally until lightly browned, 6 to 8 minutes. Transfer shrimp to a large plate and set aside, leaving chicken and chorizo in the pan. Add piment\u00F3n, bay leaves, garlic, tomatoes, onion, salt and pepper, and cook, stirring often until thickened and fragrant, about 10 minutes. Add saffron broth and remaining 4 1/2 cups chicken broth; bring to a boil."),
-                    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_9__["default"], { paragraph: true }, "Add rice and stir very gently to distribute. Top with artichokes and peppers, and cook without stirring, until most of the liquid is absorbed, 15 to 18 minutes. Reduce heat to medium-low, add reserved shrimp and mussels, tucking them down into the rice, and cook again without stirring, until mussels have opened and rice is just tender, 5 to 7 minutes more. (Discard any mussels that don\u2019t open.)"),
-                    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_9__["default"], null, "Set aside off of the heat to let rest for 10 minutes, and then serve."))))));
+                    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_9__["default"], { paragraph: true },
+                        "Product code: ",
+                        props.furnitureDescription.code),
+                    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_9__["default"], { paragraph: true },
+                        "Design: ",
+                        props.furnitureDescription.design),
+                    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_9__["default"], { paragraph: true }, props.furnitureDescription.description))))));
 };
 
 
@@ -28011,7 +28007,7 @@ const FurnitureList = (props) => {
         react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_2__["default"], { item: true, xs: 12 },
             react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, " Products ")),
         props.furniture.map((item, index) => {
-            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FurnitureItem__WEBPACK_IMPORTED_MODULE_1__["FurnitureItem"], { key: index, id: item.id, header: item.header, text: item.text, cardheader: item.cardheader });
+            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FurnitureItem__WEBPACK_IMPORTED_MODULE_1__["FurnitureItem"], { key: index, id: item.id, header: item.header, text: item.text, furnitureDescription: item.furnitureDescription });
         })));
 };
 
