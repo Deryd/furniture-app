@@ -16,7 +16,7 @@ import {
 } from "react-router-dom";
 
 export const NavMenu: React.FC = () => {
-
+    const logo = "/public/logo.svg"
     const navList = [
         { name: 'Home', link: "/" },
         { name: 'List', link: "/" },

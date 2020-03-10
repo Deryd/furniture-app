@@ -26,6 +26,7 @@ export const FurnitureItem: React.FC<IFurniture> = (props) => {
         createStyles({
             root: {
                 maxWidth: 345,
+                margin: 4
             },
             media: {
                 height: 0,
@@ -71,7 +72,7 @@ export const FurnitureItem: React.FC<IFurniture> = (props) => {
                     subheader={props.furnitureDescription.type} />
                 <CardMedia
                     className={classes.media}
-                    image="/static/images/cards/paella.jpg"
+                    image={props.image}
                     title="Paella dish" />
                 <CardContent>
                     <Typography variant="body2" color="textSecondary" component="p">

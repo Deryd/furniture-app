@@ -16,6 +16,7 @@ export const FurnitureList: React.FC<IFurnitureList> = (props) => {
                         key={index} id={item.id}
                         header={item.header}
                         text={item.text}
+                        image={item.image}
                         furnitureDescription={item.furnitureDescription} />
                 })
             }

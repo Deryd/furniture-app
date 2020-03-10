@@ -32,9 +32,11 @@
     "typings-for-css-modules-loader": "^1.7.0",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.10.3",
     "webpack-watch-server": "^1.2.1"
   },
   "scripts": {
+    "start:dev": "webpack-dev-server",
     "start": "node ./index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

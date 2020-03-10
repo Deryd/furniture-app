@@ -7,15 +7,11 @@ interface IFurnitureDescription {
     description: string
 }
 
-interface ICardMedia {
-    image: string,
-    title: string
-}
-
 interface IFurniture {
     id: string, 
     header: string, 
     text: string,
+    image: string,
     furnitureDescription: IFurnitureDescription
 }
 

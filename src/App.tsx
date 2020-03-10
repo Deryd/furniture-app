@@ -29,12 +29,10 @@ class App extends React.Component<Props, State> {
   }
 
   componentWillMount() {
-    fetch("/furniture")
+    fetch("/furniture/top")
     .then(res => res.json())
     .then(
     (result) => {
-      //console.log(result);
-      //state = result;
       this.setState({
         furnitureList: result
       });
@@ -55,7 +53,6 @@ class App extends React.Component<Props, State> {
         <Router>
           <NavMenu />
           <div style={{ height: 250, backgroundColor: 'gray' }}></div>
-          <Footer />
 
           <Switch>
             <Route path="/admin">
@@ -66,6 +63,8 @@ class App extends React.Component<Props, State> {
             </Route>
           </Switch>
         </Router>
+        
+        <Footer />
       </div>
     );
   }
